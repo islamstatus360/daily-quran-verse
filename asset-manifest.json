@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/daily-quran-verse/static/css/main.073c9b0a.css",
+    "main.js": "/daily-quran-verse/static/js/main.bf81d116.js",
+    "static/js/787.52f95cab.chunk.js": "/daily-quran-verse/static/js/787.52f95cab.chunk.js",
+    "static/media/logo.svg": "/daily-quran-verse/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/daily-quran-verse/index.html",
+    "main.073c9b0a.css.map": "/daily-quran-verse/static/css/main.073c9b0a.css.map",
+    "main.bf81d116.js.map": "/daily-quran-verse/static/js/main.bf81d116.js.map",
+    "787.52f95cab.chunk.js.map": "/daily-quran-verse/static/js/787.52f95cab.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.bf81d116.js"
+  ]
+}
