@@ -31,6 +31,9 @@ body {
 .author {
   font-size: 1.6rem;
 }
+.App-link {
+  color: #61fb8f;
+}
 
 @media (max-width: 550px) {
   .quote {
