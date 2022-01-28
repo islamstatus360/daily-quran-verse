@@ -8,8 +8,12 @@ const App = () => {
   const [snum, setSnum] = useState();
   const [num, setNum] = useState();
 
+  
+
   var min = 1;
   var max = 6236;
+
+  var tweetURL =`https://twitter.com/intent/tweet?text=${val} - ${snum}:${num} &hashtags=%23islamstatus360%20%23dailyquranverse`;
 
   const getData = async () => {
     var randomNumber = Math.floor(Math.random() * (max - min + 1)) + min; 
@@ -20,6 +24,7 @@ const App = () => {
     setSnum(mainData.data.surah.number);
     setNum(mainData.data.numberInSurah);
   }
+  
 
   return (
     <>
@@ -36,7 +41,7 @@ const App = () => {
                     </div>
     
                 <div className="d-flex justify-content-between buttons">
-                    <a className="btn btn-primary" target="_blank" href = "#" id="tweet-quote"><i className="fab fa-twitter"></i> Tweet</a>
+                    <a className="btn btn-primary" target="_blank" href={tweetURL} id="tweet-quote"><i className="fab fa-twitter"></i> Tweet</a>
                     <button className="btn  btn-outline-primary" onClick={getData} id="new-quote">
                       Get Next
                     </button>
