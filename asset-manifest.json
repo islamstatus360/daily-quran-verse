@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/daily-quran-verse/static/css/main.c03a0631.css",
-    "main.js": "/daily-quran-verse/static/js/main.abfefdb0.js",
+    "main.css": "/daily-quran-verse/static/css/main.a1dacdb5.css",
+    "main.js": "/daily-quran-verse/static/js/main.91adfac5.js",
     "index.html": "/daily-quran-verse/index.html",
-    "main.c03a0631.css.map": "/daily-quran-verse/static/css/main.c03a0631.css.map",
-    "main.abfefdb0.js.map": "/daily-quran-verse/static/js/main.abfefdb0.js.map"
+    "main.a1dacdb5.css.map": "/daily-quran-verse/static/css/main.a1dacdb5.css.map",
+    "main.91adfac5.js.map": "/daily-quran-verse/static/js/main.91adfac5.js.map"
   },
   "entrypoints": [
-    "static/css/main.c03a0631.css",
-    "static/js/main.abfefdb0.js"
+    "static/css/main.a1dacdb5.css",
+    "static/js/main.91adfac5.js"
   ]
 }
