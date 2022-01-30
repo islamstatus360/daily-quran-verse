@@ -2,62 +2,13 @@ import React, { useState, useRef } from 'react';
 import './App.css';
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import LanguageIcon from '@material-ui/icons/Language';
-import FullscreenIcon from '@material-ui/icons/Fullscreen';
-import html2canvas from 'html2canvas';
+import DeleteIcon from '@material-ui/icons/Delete';
+import { useScreenshot } from "use-screenshot-hook";
 
-const App = () => {
+const App1 = () => {
 
-  // const ref = useRef(null);
-  // const { image, takeScreenshot, clear } = useScreenshot();
-
-  const exportAsPicture = () => {
-    const html = document.getElementsByTagName('HTML')[0];
-    const body =  document.getElementsByTagName('BODY')[0]
-    let htmlWidth = html.clientWidth;
-    let bodyWidth = body.clientWidth;
-
-    const data = document.getElementById('screen')
-    const newWidth = data.scrollWidth - data.clientWidth
-
-
-    if (newWidth > data.clientWidth){
-        htmlWidth += newWidth
-        bodyWidth += newWidth
-    }
-
-    html.style.width = htmlWidth + 'px'
-    body.style.width = bodyWidth + 'px'
-
-    html2canvas(data).then((canvas)=>{
-        return canvas.toDataURL('image/png', 1.0)
-    }).then((image)=>{
-        saveAs(image, 'year-in-music.png')
-        html.style.width = null
-        body.style.width = null
-    })
-}
-
-const saveAs = (blob, fileName) =>{
-    const elem = window.document.createElement('a');
-    elem.href = blob
-    elem.download = fileName;
-    (document.body || document.documentElement).appendChild(elem);
-    if (typeof elem.click === 'function') {
-        elem.click();
-    } else {
-        elem.target = '_blank';
-        elem.dispatchEvent(new MouseEvent('click', {
-            view: window,
-            bubbles: true,
-            cancelable: true
-        }));
-    }
-    URL.revokeObjectURL(elem.href);
-    elem.remove()
-}
-
-
-
+  const ref = useRef(null);
+  const { image, takeScreenshot, clear } = useScreenshot();
 
   const [val, setVal] = useState('In the name of God, The Most Gracious, The Dispenser of Grace:');
   const [snum, setSnum] = useState(1);
@@ -110,16 +61,15 @@ const saveAs = (blob, fileName) =>{
 
   return (
     <>
-      <div className='btntxt'>
-        <FullscreenIcon id="shot" onClick={exportAsPicture} />
-        <button className="btn btn-outline-primary" onClick={getLanguage}>
+      <div>
+        <button className="btn btntxt  btn-outline-primary" onClick={getLanguage}>
           <span id='language-title'>English </span><LanguageIcon/>
         </button>
       </div>
       
-      <div id="screen" className="wrapper d-flex align-items-center justify-content-center">
+      <div className="wrapper d-flex  align-items-center justify-content-center">
       
-            <div className="col-6 box p-4 mt-0 rounded" id="quote-box">
+            <div className="col-6 box p-4 rounded" id="quote-box">
                     <div className="mb-4">
                         <p id="text" className="quote"><strong><i className="fas fa-quote-left fa-2x"></i>{val}</strong></p>
                         
@@ -132,14 +82,23 @@ const saveAs = (blob, fileName) =>{
 
                 <div className="d-flex justify-content-between buttons">                  
                     <a className="btn btn-primary" target="_blank" href={tweetURL} id="tweet-quote"><i className="fab fa-twitter"></i> Tweet</a>
+                    <button className="btn  btn-outline-primary" onClick={() => takeScreenshot()}>
+                      ScreenShot
+                    </button>
                     <button className="btn  btn-outline-primary" onClick={getData} id="new-quote">
                       Get Next
                     </button>
                 </div>
+                {image && (
+                  <div>
+                    <img width={800} height={100} src={image} />
+                    <button className="btn  btn-outline-primary" onClick={clear}>Clear<DeleteIcon/></button>
+                  </div>
+                )}
             </div>
        </div>
     </>
   );
 }
 
-export default App;
+export default App1;
