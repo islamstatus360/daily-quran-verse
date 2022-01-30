@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap");
 
+
 body {
   font-family: "Roboto", sans-serif;
   background: linear-gradient(0deg, #d9afd9 0%, #97d9e1 100%);
@@ -53,4 +54,9 @@ body {
     display: flex;
     flex-direction: column;
   }
+}
+
+.btntxt {
+  float: right;
+  margin: 10px;
 }
