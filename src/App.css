@@ -64,6 +64,20 @@ body {
 #shot {
   height: 50px;
   width: 50px;
-  color: blueviolet;
+  color: #0d6efd;
   cursor: pointer;
+}
+
+.icons {
+  color: #0d6efd;
+  cursor: pointer;
+  align-items: center;
+}
+
+.icon {
+  margin-right: 20px;
+}
+
+.icon:hover {
+  color: blue;
 }

@@ -1,18 +1,18 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import LanguageIcon from '@material-ui/icons/Language';
 import FullscreenIcon from '@material-ui/icons/Fullscreen';
 import html2canvas from 'html2canvas';
+import WhatsAppIcon from '@material-ui/icons/WhatsApp';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import FacebookIcon from '@material-ui/icons/Facebook';
 
 const App = () => {
 
-  // const ref = useRef(null);
-  // const { image, takeScreenshot, clear } = useScreenshot();
-
   const exportAsPicture = () => {
     const html = document.getElementsByTagName('HTML')[0];
-    const body =  document.getElementsByTagName('BODY')[0]
+    const body =  document.getElementsByTagName('BODY')[0];
     let htmlWidth = html.clientWidth;
     let bodyWidth = body.clientWidth;
 
@@ -31,7 +31,7 @@ const App = () => {
     html2canvas(data).then((canvas)=>{
         return canvas.toDataURL('image/png', 1.0)
     }).then((image)=>{
-        saveAs(image, 'year-in-music.png')
+        saveAs(image, `daily-quran-verse-[${snum}-${num}].png`);
         html.style.width = null
         body.style.width = null
     })
@@ -56,9 +56,6 @@ const saveAs = (blob, fileName) =>{
     elem.remove()
 }
 
-
-
-
   const [val, setVal] = useState('In the name of God, The Most Gracious, The Dispenser of Grace:');
   const [snum, setSnum] = useState(1);
   const [num, setNum] = useState(1);
@@ -68,6 +65,8 @@ const saveAs = (blob, fileName) =>{
   var max = 6236;
 
   var tweetURL =`https://twitter.com/intent/tweet?text=${val} - ${snum}:${num} &hashtags=islamstatus360%20%23dailyquranverse`;
+  var facebookURL =`https://www.facebook.com/sharer/sharer.php?text=${val} - ${snum}:${num} &hashtags=islamstatus360%20%23dailyquranverse`;
+  var whatsappURL =`https://api.whatsapp.com/send?text=${val} - ${snum}:${num} &hashtags=islamstatus360%20%23dailyquranverse data-action="share/whatsapp/share`;
  
   function getRandomColor() {
     var letters = 'ABCDEF'.split('');
@@ -91,6 +90,7 @@ const saveAs = (blob, fileName) =>{
   }
   
   const getLanguage = () => {
+    getData();
     let val = lang;
     if(val === 'en.asad'){
       document.getElementById("text").style.direction = "rtl";
@@ -116,28 +116,33 @@ const saveAs = (blob, fileName) =>{
           <span id='language-title'>English </span><LanguageIcon/>
         </button>
       </div>
-      
+
       <div id="screen" className="wrapper d-flex align-items-center justify-content-center">
-      
+        {/* <div id='screen-box'> */}
             <div className="col-6 box p-4 mt-0 rounded" id="quote-box">
                     <div className="mb-4">
                         <p id="text" className="quote"><strong><i className="fas fa-quote-left fa-2x"></i>{val}</strong></p>
                         
                         <div className = "writer" >
-                          <cite className="d-block text-center" id="author" className="author">
+                          <cite className="d-block text-center author" id="author" >
                             <h2>[{snum}:{num}]</h2>
                           </cite>
                         </div>                        
                     </div>
 
-                <div className="d-flex justify-content-between buttons">                  
-                    <a className="btn btn-primary" target="_blank" href={tweetURL} id="tweet-quote"><i className="fab fa-twitter"></i> Tweet</a>
+                <div className="d-flex justify-content-between">
+                  <div className='d-flex icons'>
+                    <a href={tweetURL} target="_blank"><TwitterIcon className='icon'/></a>
+                    <a href={whatsappURL} target="_blank"><WhatsAppIcon className='icon'/></a>
+                    <a href={facebookURL} target="_blank"><FacebookIcon className='icon'/></a>
+                  </div>
                     <button className="btn  btn-outline-primary" onClick={getData} id="new-quote">
                       Get Next
                     </button>
                 </div>
             </div>
        </div>
+       {/* </div> */}
     </>
   );
 }
